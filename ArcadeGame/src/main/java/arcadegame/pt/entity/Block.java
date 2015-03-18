@@ -2,6 +2,8 @@ package arcadegame.pt.entity;
 
 import org.lwjgl.opengl.GL11;
 
+import arcadegame.pt.game.GameApp;
+
 public class Block extends Entity{
 		
 	public Block(int posX, int posY){
@@ -11,19 +13,22 @@ public class Block extends Entity{
 		//Set boundary's for the entity
 		this.setBottomBoundary(0);
 		this.setLeftBoundary(0);
-		this.setUpperBoundary(50);
-		this.setRightBoundary(50);
+		this.setUpperBoundary(64);
+		this.setRightBoundary(64);
 		
 		this.setApplyGravity(false);
 		
 		//Set texture for the block
-		this.setTextureLocation("/src/main/java/arcadegame/textures/block/block.png");
-		this.setGameTexture();		
+		this.setTextureLocation(GameApp.TEXTURE_LOCATION + "block/block.png");
+		this.setGameTexture();
 	}
 
 	@Override
 	public void draw() {
 		
+		//GL11.glClearColor(0.0f, 0.0f, 0.0f, 0.0f); 
+	   // GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);		// Clear the screen and depth buffer
+	    /*
 		GL11.glClearColor(0.0f, 0.0f, 0.0f, 0.0f); 
 		GL11.glPushMatrix();
 		
@@ -38,7 +43,7 @@ public class Block extends Entity{
 		    GL11.glEnd();
 		    
 	    GL11.glPopMatrix();
-	    
+	    */
 	    this.drawTexture();
 	}
 }

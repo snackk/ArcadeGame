@@ -27,11 +27,11 @@ public class GameTexture {
 		
 		GL11.glPushMatrix();
 		
-			GL11.glTranslatef((int)posx, (int)posy, -1);		//UPPER RIGHT SIDE
+			GL11.glTranslatef((float)posx, (float)posy, -1);		//UPPER RIGHT SIDE
 		
 			GL11.glPushMatrix();
 			
-				GL11.glRotatef(180, 0, 0, 1);
+				GL11.glRotatef(180, 0, 0, -1);
 			
 				GL11.glBegin(GL11.GL_QUADS);
 				

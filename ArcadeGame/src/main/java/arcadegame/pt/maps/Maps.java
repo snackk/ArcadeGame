@@ -16,7 +16,7 @@ public class Maps {
 	}
 	
 	private void createMap(){
-		addBlock(new Block(500,100));	
+		addBlock(new Block(500,114));	
 		addBlock(new Block(600,200));
 	}
 	

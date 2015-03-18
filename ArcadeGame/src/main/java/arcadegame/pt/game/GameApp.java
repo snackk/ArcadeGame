@@ -5,9 +5,10 @@ import arcadegame.pt.gamestate.GameState;
 public class GameApp{
 	
 	private static GameState gamestate;	
+	public static String TEXTURE_LOCATION = "src/main/java/arcadegame/textures/";
 	
 	public static void setGameState(){
-		gamestate = new GameState();
+		gamestate = GameState.getInstance();
 	}
 	
 	public static GameState getGameState(){

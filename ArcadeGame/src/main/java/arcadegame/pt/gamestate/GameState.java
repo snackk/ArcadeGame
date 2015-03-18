@@ -6,6 +6,7 @@ import org.lwjgl.opengl.Display;
 import arcadegame.pt.display.GameBackground;
 import arcadegame.pt.display.GameDisplay;
 import arcadegame.pt.entity.Player;
+import arcadegame.pt.game.GameApp;
 import arcadegame.pt.maps.Maps;
 
 public class GameState{
@@ -18,14 +19,27 @@ public class GameState{
 	private Maps map;
 	private Timer timer;
 	
+	  private static GameState gameStateInstance = null;
+	  
+	   protected GameState() {
+
+	   }
+	   
+	   public static GameState getInstance() {
+	      if(gameStateInstance == null) {
+	    	  gameStateInstance = new GameState();
+	      }
+	      return gameStateInstance;
+	   }
+	
 	private void gameInterrupt(){
 		
+		//CASE FPS DROP PLAYER MOVES THE SAME 
 		double instanteAcceleration = getTimer().getTimerDelta();
 		getPlayer().setAccelerationX(instanteAcceleration);
 		getPlayer().setAccelerationY(instanteAcceleration);
 		
 		//KEYBOARD INTERRUPT && PLAYER COLISION WITH BOUNDARYS
-		
 		if(keyboard.isAKeyDown()){
 			if(getColision().checkColision(getPlayer(), Colision.LEFT)){
 				getPlayer().moveLeft();
@@ -59,7 +73,7 @@ public class GameState{
 	}
 	
 	
-	private void initializeGameEntitys(){
+	private void initializeGameEntities(){
 		
 		Mouse.setGrabbed(true);
 
@@ -86,18 +100,22 @@ public class GameState{
 	}
 	
 	public void startGame(){
-        initializeGameEntitys();
+        initializeGameEntities();
 		
     	while(!Display.isCloseRequested()) {
     		
 			gameInterrupt();
-			getMap().drawMap();
-			getBackground().drawBackground();
-			
+			handleDraw();
+
 			Display.update();
 			Display.sync(120);						
     	}
     	Display.destroy();
+	}
+	
+	private void handleDraw(){
+		getMap().drawMap();
+		getBackground().drawBackground();
 	}
 	
 	private void setDisplay(GameDisplay display){
@@ -133,7 +151,7 @@ public class GameState{
 	}
 
 	private void setBackground() {
-		this.background = new GameBackground("src/main/java/arcadegame/textures/background/background.png", Display.getWidth(), Display.getHeight());
+		this.background = new GameBackground(GameApp.TEXTURE_LOCATION + "background/background.png", Display.getWidth(), Display.getHeight());
 	}
 
 	private Maps getMap() {

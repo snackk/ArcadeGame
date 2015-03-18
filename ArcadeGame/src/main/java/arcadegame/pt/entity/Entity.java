@@ -30,7 +30,6 @@ public abstract class Entity {
 	public abstract void draw();
 	
 	public final void drawTexture(){
-		this.setTexture(this.getGameTexture().initTexture(getTextureLocation()));
 		this.getGameTexture().drawTexture(this.getTexture(), this.getRightBoundary(), this.getUpperBoundary());
 	}
 	
@@ -139,6 +138,7 @@ public abstract class Entity {
 
 	public final void setGameTexture() {
 		this.gameTexture = new GameTexture();
+		this.generateTexture();
 	}
 
 	private String getTextureLocation() {
@@ -155,6 +155,10 @@ public abstract class Entity {
 
 	private void setTexture(Texture texture) {
 		this.texture = texture;
+	}
+	
+	public void generateTexture(){
+		this.setTexture(this.getGameTexture().initTexture(getTextureLocation()));
 	}
 
 	public boolean getApplyGravity() {
