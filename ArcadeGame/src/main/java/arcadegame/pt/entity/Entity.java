@@ -2,6 +2,7 @@ package arcadegame.pt.entity;
 
 import org.newdawn.slick.opengl.Texture;
 
+import arcadegame.pt.gamestate.Gravity;
 import arcadegame.pt.texture.GameTexture;
 
 public abstract class Entity {
@@ -15,6 +16,8 @@ public abstract class Entity {
 	private GameTexture gameTexture;
 	private Texture texture;
 	private String textureLocation;
+	private Gravity gravity;
+	private boolean isJumping;
 	
 	public Entity(double posX, double posY, double speedX, double speedY){
 		
@@ -25,6 +28,9 @@ public abstract class Entity {
 		//Set the axis acceleration for all entity
 		this.setAccelerationX(1);
 		this.setAccelerationY(1);
+		
+		//Add gravity to entity
+		this.setGravity();
 	}
 	
 	public abstract void draw();
@@ -83,15 +89,15 @@ public abstract class Entity {
 		this.speedY = y;
 	}
 	
-	private final double getSpeedX(){
+	public final double getSpeedX(){
 		return this.speedX;
 	}
 
-	private final double getSpeedY(){
+	public final double getSpeedY(){
 		return this.speedY;
 	}	
 	
-	private final double getAccelerationY() {
+	public final double getAccelerationY() {
 		return accelerationY;
 	}
 
@@ -99,7 +105,7 @@ public abstract class Entity {
 		this.accelerationY = accelerationY;
 	}
 
-	private final double getAccelerationX() {
+	public final double getAccelerationX() {
 		return accelerationX;
 	}
 
@@ -167,5 +173,21 @@ public abstract class Entity {
 
 	public void setApplyGravity(boolean applyGravity) {
 		this.applyGravity = applyGravity;
+	}
+
+	public Gravity getGravity() {
+		return this.gravity;
+	}
+
+	public void setGravity() {
+		this.gravity = new Gravity(this);
+	}
+
+	public boolean isJumping() {
+		return this.isJumping;
+	}
+
+	public void setJumping(boolean isJumping) {
+		this.isJumping = isJumping;
 	}	
 }

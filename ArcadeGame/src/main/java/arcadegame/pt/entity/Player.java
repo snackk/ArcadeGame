@@ -4,7 +4,7 @@ import org.lwjgl.opengl.GL11;
 import arcadegame.pt.game.GameApp;
 
 public class Player extends Entity{
-		
+	
 	public Player(int posX, int posY, double speedX, double speedY){
 		
 		super(posX, posY, speedX, speedY);
@@ -22,6 +22,11 @@ public class Player extends Entity{
 		this.setGameTexture();
 		
 		this.draw();
+	}
+	
+	public void jump(){
+		setJumping(true);
+		getGravity().makeJump();
 	}
 
 	@Override

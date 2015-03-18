@@ -5,6 +5,7 @@ import org.lwjgl.opengl.Display;
 
 import arcadegame.pt.display.GameBackground;
 import arcadegame.pt.display.GameDisplay;
+import arcadegame.pt.entity.Block;
 import arcadegame.pt.entity.Player;
 import arcadegame.pt.game.GameApp;
 import arcadegame.pt.maps.Maps;
@@ -33,6 +34,11 @@ public class GameState{
 	   }
 	
 	private void gameInterrupt(){
+		
+		//IF PLAYER IS JUMPING LET HIM FINISH 
+		if(getPlayer().isJumping()){
+			getPlayer().getGravity().makeJump();
+		}
 		
 		//CASE FPS DROP PLAYER MOVES THE SAME 
 		double instanteAcceleration = getTimer().getTimerDelta();
@@ -69,6 +75,17 @@ public class GameState{
 		}	
 		
 		if(keyboard.isSPKeyDown()){
+			getPlayer().jump();
+		}
+		
+		//PLAYER COLISION WITH BOUNDARYS CAUSED BY PHYSICS
+		if(!getColision().checkColision(getPlayer(), Colision.DOWN)){
+			getPlayer().setApplyGravity(false);
+		}
+		
+		//CHECK MAP COLISION
+		for(Block b : getMap().getBlocks()){
+			getColision().checkColision(getPlayer(), b);
 		}
 	}
 	
@@ -96,21 +113,27 @@ public class GameState{
         setMap();
         
         //Initialize Time
-        setTimer();
+        setTimer();    
 	}
 	
 	public void startGame(){
         initializeGameEntities();
 		
     	while(!Display.isCloseRequested()) {
-    		
 			gameInterrupt();
+			
+			handleGravity();
+			
 			handleDraw();
 
 			Display.update();
 			Display.sync(120);						
     	}
     	Display.destroy();
+	}
+	
+	private void handleGravity(){
+		getPlayer().getGravity().applygravity();
 	}
 	
 	private void handleDraw(){

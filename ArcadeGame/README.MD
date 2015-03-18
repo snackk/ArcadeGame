@@ -8,5 +8,6 @@ create npc
 
 TOFIX
 
-Textures 
-entity.s color
+Player belongs to MAP 
+GameState has a currentMap
+GameState does not handle gameinterrupt

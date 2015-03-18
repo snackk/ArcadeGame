@@ -2,14 +2,15 @@ package arcadegame.pt.gamestate;
 
 import org.lwjgl.opengl.Display;
 
+import arcadegame.pt.entity.Entity;
 import arcadegame.pt.entity.Player;
 
 public class Colision {
 	
 	//Window Boundary
-	private static int UPPER_LIMIT;
+	public static int UPPER_LIMIT;
 	private static int RIGHT_SIDE_LIMIT;	
-	private static int DOWN_LIMIT = 50;
+	public static int DOWN_LIMIT = 50;
 	private static int LEFT_SIDE_LIMIT = 0;
 	
 	//"enum" to left,right,up,down
@@ -23,24 +24,34 @@ public class Colision {
 		Colision.UPPER_LIMIT = Display.getHeight();
 	}
 	
-	public boolean checkColision(Player player, int direction){
+	public boolean checkColision(Entity entity, int direction){
 		
 		if(direction == LEFT){
-			if(player.getLeftBoundary() >= Colision.LEFT_SIDE_LIMIT)
+			if(entity.getLeftBoundary() >= Colision.LEFT_SIDE_LIMIT)
 				return true;
 		}		
 		if(direction == RIGHT){
-			if(player.getRightBoundary() <= Colision.RIGHT_SIDE_LIMIT)
+			if(entity.getRightBoundary() <= Colision.RIGHT_SIDE_LIMIT)
 				return true;			
 		}
 		if(direction == UP){
-			if(player.getUpperBoundary() <= Colision.UPPER_LIMIT)
+			if(entity.getUpperBoundary() <= Colision.UPPER_LIMIT)
 				return true;			
 		}			
 		if(direction == DOWN){		
-			if(player.getBottomBoundary() >= Colision.DOWN_LIMIT)
+			if(entity.getBottomBoundary() >= Colision.DOWN_LIMIT)
 				return true;			
 		}
 		return false;
+	}
+	
+	public void checkColision(Player player, Entity entity){
+		double playerUp = player.getBottomBoundary() - entity.getUpperBoundary();
+		
+		if(player.getBottomBoundary() >= entity.getUpperBoundary() && playerUp < 2){
+			player.setPosition(player.getPositionX(), entity.getPositionY());
+			player.setApplyGravity(false);
+			player.setJumping(false);
+		}
 	}
 }
