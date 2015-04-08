@@ -1,14 +1,14 @@
-package arcadegame.pt.gamestate;
+package arcadegame.gamestate;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 
-import arcadegame.pt.display.GameBackground;
-import arcadegame.pt.display.GameDisplay;
-import arcadegame.pt.entity.Block;
-import arcadegame.pt.entity.Player;
-import arcadegame.pt.game.GameApp;
-import arcadegame.pt.maps.Maps;
+import arcadegame.display.GameBackground;
+import arcadegame.display.GameDisplay;
+import arcadegame.entity.Block;
+import arcadegame.entity.Player;
+import arcadegame.game.GameApp;
+import arcadegame.maps.Maps;
 
 public class GameState{
 	

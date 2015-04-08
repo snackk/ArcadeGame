@@ -1,4 +1,4 @@
-package arcadegame.pt.gamestate;
+package arcadegame.gamestate;
 
 import org.lwjgl.input.Keyboard;
 

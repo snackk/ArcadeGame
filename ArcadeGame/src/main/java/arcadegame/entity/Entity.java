@@ -1,9 +1,9 @@
-package arcadegame.pt.entity;
+package arcadegame.entity;
 
 import org.newdawn.slick.opengl.Texture;
 
-import arcadegame.pt.gamestate.Gravity;
-import arcadegame.pt.texture.GameTexture;
+import arcadegame.gamestate.Gravity;
+import arcadegame.texture.GameTexture;
 
 public abstract class Entity {
 	

@@ -1,8 +1,8 @@
-package arcadegame.pt.entity;
+package arcadegame.entity;
 
 import org.lwjgl.opengl.GL11;
 
-import arcadegame.pt.game.GameApp;
+import arcadegame.game.GameApp;
 
 public class Block extends Entity{
 		

@@ -1,4 +1,4 @@
-package arcadegame.pt.texture;
+package arcadegame.texture;
 
 import java.io.IOException;
 

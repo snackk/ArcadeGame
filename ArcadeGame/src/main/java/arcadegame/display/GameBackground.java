@@ -1,8 +1,8 @@
-package arcadegame.pt.display;
+package arcadegame.display;
 
 import org.newdawn.slick.opengl.Texture;
 
-import arcadegame.pt.texture.GameTexture;
+import arcadegame.texture.GameTexture;
 
 public class GameBackground {
 	

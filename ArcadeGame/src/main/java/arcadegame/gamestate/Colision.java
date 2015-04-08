@@ -1,9 +1,9 @@
-package arcadegame.pt.gamestate;
+package arcadegame.gamestate;
 
 import org.lwjgl.opengl.Display;
 
-import arcadegame.pt.entity.Entity;
-import arcadegame.pt.entity.Player;
+import arcadegame.entity.Entity;
+import arcadegame.entity.Player;
 
 public class Colision {
 	

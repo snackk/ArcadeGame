@@ -1,6 +1,7 @@
-package arcadegame.pt.game;
+package arcadegame.game;
 
-import arcadegame.pt.gamestate.GameState;
+import arcadegame.gamestate.GameState;
+
 
 public class GameApp{
 	

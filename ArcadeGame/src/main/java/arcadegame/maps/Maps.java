@@ -1,11 +1,11 @@
-package arcadegame.pt.maps;
+package arcadegame.maps;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
-import arcadegame.pt.entity.Block;
+import arcadegame.entity.Block;
 
 public class Maps {
 	private ArrayList<Block> blocks;

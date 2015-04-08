@@ -1,4 +1,4 @@
-package arcadegame.pt.display;
+package arcadegame.display;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;

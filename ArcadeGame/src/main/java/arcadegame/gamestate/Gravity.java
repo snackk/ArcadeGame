@@ -1,6 +1,7 @@
-package arcadegame.pt.gamestate;
+package arcadegame.gamestate;
 
-import arcadegame.pt.entity.Entity;
+import arcadegame.entity.Entity;
+
 
 public class Gravity {
 	private Timer gravityDelta;
