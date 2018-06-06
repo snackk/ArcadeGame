@@ -164,7 +164,7 @@ public abstract class Entity {
 	}
 	
 	public void generateTexture(){
-		this.setTexture(this.getGameTexture().initTexture(getTextureLocation()));
+		//this.setTexture(this.getGameTexture().initTexture(getTextureLocation()));
 	}
 
 	public boolean getApplyGravity() {
