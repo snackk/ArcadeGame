@@ -21,4 +21,4 @@ $ mvn compile
 $ mvn exec:java
 ```
 
-  Written by Diogo Santos.
+  Written by [@snackk](https://github.com/snackk)
